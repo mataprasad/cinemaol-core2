@@ -13,6 +13,19 @@ namespace CinemaOL.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult FillMovieist()
+        {
+            try
+            {
+                return Json(_dbAccess.FillMovieList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         [HttpPost]
         public IActionResult FillDateList([FromBody]VMSelectShow obj)
         {

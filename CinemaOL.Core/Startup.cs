@@ -34,6 +34,7 @@ namespace CinemaOL.Core
                 O.DefaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
                 O.ContentRootPath = this._contentRootPath;
             });
+              services.AddCors();
             services.AddDistributedMemoryCache();
             services.AddSession();
             services.AddMvc().AddXmlDataContractSerializerFormatters();
@@ -74,6 +75,9 @@ namespace CinemaOL.Core
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+    app.UseCors(builder =>
+       builder.WithOrigins("*"));
 
             app.UseStaticFiles();
             app.UseSession();
